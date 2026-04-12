@@ -16,7 +16,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${inter.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col bg-[#020b18] text-slate-200 grain">
+      <body className="min-h-full flex flex-col bg-[#020b18] text-slate-200 grain" suppressHydrationWarning>
         {children}
         <Analytics />
       </body>
