@@ -16,10 +16,10 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
+        <DLID />
         <Problem />
         <Marquee />
         <Technology />
-        <DLID />
         <DasScene />
         <Applications />
         <WhyUs />
