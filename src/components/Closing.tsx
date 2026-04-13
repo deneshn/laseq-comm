@@ -1,7 +1,8 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { Mail, User } from 'lucide-react';
+import { useForm, ValidationError } from '@formspree/react';
+import { User, Send, CheckCircle } from 'lucide-react';
 
 /**
  * FiberWeavePulseCanvas — Option 1
@@ -219,6 +220,71 @@ function FiberWeavePulseCanvas() {
   return <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" aria-hidden />;
 }
 
+function ContactForm() {
+  const [state, handleSubmit] = useForm('mqewzrjn');
+
+  if (state.succeeded) {
+    return (
+      <div className="flex flex-col items-start gap-3 py-8">
+        <CheckCircle size={28} className="text-cyan-400" />
+        <p className="text-white font-semibold text-lg">Message sent.</p>
+        <p className="text-slate-400 text-sm">We&apos;ll get back to you shortly.</p>
+      </div>
+    );
+  }
+
+  return (
+    <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+      <div className="flex flex-col sm:flex-row gap-4">
+        <div className="flex-1 flex flex-col gap-1.5">
+          <label htmlFor="name" className="text-xs text-slate-500 uppercase tracking-widest">Name</label>
+          <input
+            id="name"
+            type="text"
+            name="name"
+            required
+            placeholder="Your name"
+            className="bg-white/5 border border-white/10 rounded-lg px-4 py-2.5 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-cyan-500/50 transition-colors"
+          />
+          <ValidationError field="name" prefix="Name" errors={state.errors} className="text-red-400 text-xs" />
+        </div>
+        <div className="flex-1 flex flex-col gap-1.5">
+          <label htmlFor="email" className="text-xs text-slate-500 uppercase tracking-widest">Email</label>
+          <input
+            id="email"
+            type="email"
+            name="email"
+            required
+            placeholder="you@example.com"
+            className="bg-white/5 border border-white/10 rounded-lg px-4 py-2.5 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-cyan-500/50 transition-colors"
+          />
+          <ValidationError field="email" prefix="Email" errors={state.errors} className="text-red-400 text-xs" />
+        </div>
+      </div>
+      <div className="flex flex-col gap-1.5">
+        <label htmlFor="message" className="text-xs text-slate-500 uppercase tracking-widest">Message</label>
+        <textarea
+          id="message"
+          name="message"
+          required
+          rows={4}
+          placeholder="Tell us about your project or query..."
+          className="bg-white/5 border border-white/10 rounded-lg px-4 py-2.5 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-cyan-500/50 transition-colors resize-none"
+        />
+        <ValidationError field="message" prefix="Message" errors={state.errors} className="text-red-400 text-xs" />
+      </div>
+      <button
+        type="submit"
+        disabled={state.submitting}
+        className="self-start flex items-center gap-2 px-6 py-2.5 rounded-full bg-cyan-500 text-[#020b18] font-semibold text-sm hover:bg-cyan-400 transition-all disabled:opacity-50 shadow-[0_0_20px_rgba(0,212,255,0.25)]"
+      >
+        <Send size={14} />
+        {state.submitting ? 'Sending…' : 'Send Message'}
+      </button>
+    </form>
+  );
+}
+
 export default function Closing() {
   return (
     <section id="closing" className="relative bg-[#010810] overflow-hidden">
@@ -232,31 +298,28 @@ export default function Closing() {
           Let&apos;s Talk
         </h2>
 
-        <div className="flex flex-col sm:flex-row gap-10">
-          <div className="flex items-center gap-4">
-            <div className="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center flex-shrink-0">
-              <User size={16} className="text-cyan-400" />
-            </div>
-            <div>
-              <p className="text-xs text-slate-500 uppercase tracking-widest mb-0.5">Contact</p>
-              <p className="text-white font-medium">Denesh Narasimman</p>
+        <div className="grid md:grid-cols-2 gap-16">
+          {/* Left — contact details */}
+          <div className="flex flex-col gap-8">
+            <div className="flex items-center gap-4">
+              <div className="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center flex-shrink-0">
+                <User size={16} className="text-cyan-400" />
+              </div>
+              <div>
+                <p className="text-xs text-slate-500 uppercase tracking-widest mb-0.5">Contact</p>
+                <p className="text-white font-medium">LaseQ Systems Pvt Ltd</p>
+                <a
+                  href="mailto:info@laseqsys.com"
+                  className="text-cyan-400 hover:text-cyan-300 transition-colors text-sm"
+                >
+                  info@laseqsys.com
+                </a>
+              </div>
             </div>
           </div>
 
-          <div className="flex items-center gap-4">
-            <div className="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center flex-shrink-0">
-              <Mail size={16} className="text-cyan-400" />
-            </div>
-            <div>
-              <p className="text-xs text-slate-500 uppercase tracking-widest mb-0.5">Email</p>
-              <a
-                href="mailto:denesh2898@gmail.com"
-                className="text-cyan-400 hover:text-cyan-300 transition-colors font-medium"
-              >
-                denesh2898@gmail.com
-              </a>
-            </div>
-          </div>
+          {/* Right — contact form */}
+          <ContactForm />
         </div>
       </div>
 
