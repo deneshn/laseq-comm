@@ -158,7 +158,7 @@ export default function Hero() {
           className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
           <a
-            href="#contact"
+            href="#closing"
             className="px-8 py-3.5 rounded-full bg-cyan-500 text-[#020b18] font-semibold text-sm hover:bg-cyan-400 transition-all shadow-[0_0_30px_rgba(0,212,255,0.3)] hover:shadow-[0_0_40px_rgba(0,212,255,0.5)]"
           >
             Talk to Our Team

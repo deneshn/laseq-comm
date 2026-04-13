@@ -6,12 +6,12 @@ import { Menu, X } from 'lucide-react';
 import Image from 'next/image';
 
 const links = [
-  { label: 'Technology', href: '#technology' },
   { label: 'DLID', href: '#dlid' },
+  { label: 'Technology', href: '#technology' },
   { label: 'Applications', href: '#applications' },
   { label: 'Why Us', href: '#why-us' },
   { label: 'Team', href: '#team' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Contact', href: '#closing' },
 ];
 
 export default function Navbar() {
@@ -62,7 +62,7 @@ export default function Navbar() {
 
         {/* CTA */}
         <a
-          href="#contact"
+          href="#closing"
           className="hidden md:flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium border border-cyan-500/40 text-cyan-400 hover:bg-cyan-500/10 transition-all"
         >
           Investor Enquiry
@@ -101,7 +101,7 @@ export default function Navbar() {
               ))}
               <li>
                 <a
-                  href="#contact"
+                  href="#closing"
                   className="inline-block px-4 py-2 rounded-full text-sm font-medium border border-cyan-500/40 text-cyan-400"
                   onClick={() => setMenuOpen(false)}
                 >
