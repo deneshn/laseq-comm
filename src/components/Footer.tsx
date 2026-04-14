@@ -6,7 +6,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-6 py-10 flex flex-col md:flex-row items-center justify-between gap-4">
         <div className="flex items-center">
           <Image
-            src="/logo1.png"
+            src="/LaseQ_Systems_Logo.png"
             alt="LaseQ Systems"
             width={100}
             height={34}

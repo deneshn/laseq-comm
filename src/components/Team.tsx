@@ -35,7 +35,7 @@ const founders = [
 const advisors = [
   {
     name: 'Dr Subhadeep De',
-    role: 'Advisor',
+    role: 'Technical Advisor',
     initials: 'SD',
     photo: null,
     linkedin: 'https://www.linkedin.com/in/subhadeep-de-00718b15',

@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import DasSensitivityChart from './DasSensitivityChart';
 
 const steps = [
   {
@@ -83,24 +84,9 @@ export default function Technology() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="gradient-border rounded-2xl bg-[#061428] p-8 mb-6"
+          className="gradient-border rounded-2xl bg-[#061428] p-0 mb-6 overflow-hidden"
         >
-          <p className="text-center text-xs text-slate-500 uppercase tracking-widest mb-6">
-            DAS Sensitivity Spectrum
-          </p>
-          <div className="relative w-full rounded-xl overflow-hidden">
-            <Image
-              src="/das-sensitivity.png.jpeg"
-              alt="DAS sensitivity spectrum showing detectable events from Earth tides to military aircraft across frequency ranges"
-              width={1200}
-              height={800}
-              className="w-full h-auto object-contain"
-            />
-          </div>
-          <p className="text-center text-xs text-slate-300 mt-4">
-            Demonstrated DAS noise floor mapped against real-world acoustic event frequency ranges.
-            Red-highlighted bands indicate defense-specific detection capabilities.
-          </p>
+          <DasSensitivityChart />
         </motion.div>
 
         {/* Fiber diagram */}
